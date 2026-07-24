@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Add Result</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+<!--navbar-->
 <nav class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6">
         <div class="flex justify-between items-center h-16">
@@ -83,5 +84,97 @@
 
     </div>
 </nav>
+
+<!--Show add result form-->
+<div class="w-1/2 py-5 px-3 mx-auto">
+
+    <h1 class="text-3xl text-grey-700 font-bold">Add Result </h1>
+
+    <form th:action="@{/admin/add-result-action}" th:object="${studentForm}" method="Post" enctype="multipart/form-data">
+
+        <!--Name-->
+        <div class="mt-5">
+            <label for="name" class="block mb-2.5 text-sm font-medium text-heading">Student Name</label>
+            <input
+                    th:field="*{name}"
+                    type="text"
+                   id="name"
+                   class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                   placeholder="Enter student name"
+                   required />
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+
+        <!--Roll Number-->
+        <div class="mt-5">
+            <label for="rollNumber" class="block mb-2.5 text-sm font-medium text-heading">Roll Number </label>
+            <input
+                    th:field="*{rollNumber}"
+                    type="text"
+                    id="rollNumber"
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                    placeholder="Enter Roll number"
+                    required />
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('rollNumber')}" th:errors="*{rollNumber}"></span>
+        </div>
+
+        <!--Email-->
+        <div class="mt-5">
+            <label for="email" class="block mb-2.5 text-sm font-medium text-heading"> Email </label>
+            <input
+                    th:field="*{email}"
+                    type="email"
+                    id="email"
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                    placeholder="Enter Email"
+                    required />
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <!--Address-->
+        <div class="mt-5">
+            <label for="address" class="block mb-2.5 text-sm font-medium text-heading"> Address </label>
+            <textarea
+                    th:field="*{address}"
+                    type="text"
+                    id="address"
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                    placeholder="Enter Address"
+                    required></textarea>
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+        </div>
+
+        <!--SchoolName-->
+        <div class="mt-5">
+            <label for="schoolName" class="block mb-2.5 text-sm font-medium text-heading">School Name</label>
+            <input
+                    th:field="*{schoolName}"
+                    type="text"
+                    id="schoolName"
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                    placeholder="Enter School Name"
+                    required />
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('schoolName')}" th:errors="*{schoolName}"></span>
+        </div>
+
+        <!--DOB-->
+        <div class="mt-5">
+            <label for="dateOfBirth" class="block mb-2.5 text-sm font-medium text-heading"> Date Of Birth</label>
+            <input
+                    th:field="*{dateOfBirth}"
+                    type="date"
+                    id="dateOfBirth"
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                    placeholder="Enter DateOfBirth "
+                    required />
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
+        </div>
+
+
+
+    </form>
+
+</div>
+
 </body>
 </html>
