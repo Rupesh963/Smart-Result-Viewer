@@ -17,6 +17,7 @@ public class StudentForm
     private String name;
     @NotBlank(message = "Roll Number is required !!")
     private String rollNumber;
+    @NotBlank(message = "Email is required !!")
     @Email(message = "Invalid Email !!")
     private String email;
     @NotBlank(message = "Address is required !!")
@@ -24,7 +25,7 @@ public class StudentForm
     @NotBlank(message = "School is required !!")
     private String schoolName;
     private String photoName;
-    @NotBlank(message = "Dob is required !!")
+    //@NotBlank(message = "Dob is required !!")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private String dateOfBirth;
     @NotBlank(message = "Standard is required !!")

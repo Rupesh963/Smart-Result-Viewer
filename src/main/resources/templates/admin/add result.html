@@ -86,11 +86,12 @@
 </nav>
 
 <!--Show add result form-->
-<div class="w-1/2 py-5 px-3 mx-auto">
+<div class="lg:w-2/3 w-full py-10 border shadow px-5  rounded mx-auto">
 
-    <h1 class="text-3xl text-grey-700 font-bold">Add Result </h1>
+    <h1 class="text-3xl text-center text-grey-700 font-bold">Add Result </h1>
+    <p class="mt-2 text-center text-gray-500">Add Student Result Data To Database...</p>
 
-    <form th:action="@{/admin/add-result-action}" th:object="${studentForm}" method="Post" enctype="multipart/form-data">
+    <form novalidate th:action="@{/admin/add-result-action}" th:object="${studentForm}" method="Post" enctype="multipart/form-data">
 
         <!--Name-->
         <div class="mt-5">
@@ -170,11 +171,124 @@
             <span class="text-red-700 p-2" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></span>
         </div>
 
+        <!--standard-->
+        <div class="mt-5">
+            <label for="standard" class="block mb-2.5 text-sm font-medium text-heading"> Standard</label>
+            <select class="w-full border shadow " id="standard" th:field="*{standard}">
+
+                <option th:each="standard : ${standardOptions}" th:value="${standard}" th:text="${standard}"></option>
+
+            </select>
+
+        </div>
+
+        <!--Father name -->
+
+        <div class="mt-5">
+            <label for="fatherName" class="block mb-2.5 text-sm font-medium text-heading">Father Name</label>
+            <input
+                    th:field="*{fatherName}"
+                    type="text"
+                    id="fatherName"
+                    class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                    placeholder="Enter Father  name"
+                    required />
+            <span class="text-red-700 p-2" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}"></span>
+        </div>
+
+        <!--gender-->
+        <div class="mt-4">
+
+            <label class="block mb-2.5 text-sm font-medium text-heading">Select gender</label>
+
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input
+                        th:field="*{gender}"
+                        th:value="male"
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        class="w-4 h-4 text-blue-600"
+                />
+                Male
+            </label>
+
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input
+                        th:field="*{gender}"
+                        th:value="female"
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        class="w-4 h-4 text-pink-600"
+                />
+                Female
+            </label>
+
+        </div>
+
+        <!--subject and marks-->
+        <div>
+            <div id="marks_container">
+                <div class="flex gap-4 rounded border px-3 mt-3 py-4">
+                    <div class="flx flx-col">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Enter subject">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Marks</label>
+                        <input  type="text" placeholder="Enter marks">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Grade</label>
+                        <input type="text" placeholder="Enter Grade">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Feedback</label>
+                        <input type="text" placeholder="Enter Feedback">
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center my-4">
+                <button onclick="addMarksRow()" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Add Subject Marks</button>
+            </div>
+        </div>
+
+        <!--Button-->
+        <div class="mt-4 flex justify-center gap-4">
+            <button type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Clear</button>
+
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add Result</button>
+        </div>
 
 
     </form>
 
 </div>
+<script>
+    function addMarksRow() {
+        const container = document.getElementById('marks_container')
+
+        container.innerHTML = container.innerHTML +  `<div class="flex gap-4 rounded border px-3 mt-3 py-4">
+                    <div class="flx flx-col">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Enter subject">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Marks</label>
+                        <input  type="text" placeholder="Enter marks">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Grade</label>
+                        <input type="text" placeholder="Enter Grade">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Feedback</label>
+                        <input type="text" placeholder="Enter Feedback">
+                    </div>
+                </div> `
+    }
+</script>
 
 </body>
 </html>
