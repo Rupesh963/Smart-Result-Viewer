@@ -129,3 +129,28 @@ The app will start on **http://localhost:8081**
 
 ## 📄 License
 This project is open-source and available for learning/personal use.
+
+--
+
+## 📸 Screenshots
+
+<img width="1280" height="711" alt="Screenshot 2026-07-28 at 12 07 37 AM" src="https://github.com/user-attachments/assets/3fddae82-107c-4407-8e39-59d07da337db" />
+
+<img width="1277" height="709" alt="Screenshot 2026-07-28 at 12 07 50 AM" src="https://github.com/user-attachments/assets/e7d600b5-b12c-4a4b-9d9a-3ef00c2dbfd9" />
+
+<img width="1280" height="708" alt="Screenshot 2026-07-28 at 12 08 26 AM" src="https://github.com/user-attachments/assets/f5fd46af-272d-4416-83a4-37cfad325904" />
+
+<img width="1280" height="669" alt="Screenshot 2026-07-28 at 12 08 44 AM" src="https://github.com/user-attachments/assets/a46cd76e-ef75-4bb9-927f-1fc38289a93e" />
+
+<img width="1280" height="709" alt="Screenshot 2026-07-28 at 12 09 03 AM" src="https://github.com/user-attachments/assets/b8773c1a-1d1c-4e22-91f6-bf7f058fbd2c" />
+
+<img width="1280" height="709" alt="Screenshot 2026-07-28 at 12 09 14 AM" src="https://github.com/user-attachments/assets/3cb49ac0-2bf7-411c-9d97-777d57ddc085" />
+
+<img width="540" height="766" alt="Screenshot 2026-07-28 at 12 20 17 AM" src="https://github.com/user-attachments/assets/a3c820b0-06c6-4144-8d3c-c898e1f3d95e" />
+
+
+
+
+
+
+
