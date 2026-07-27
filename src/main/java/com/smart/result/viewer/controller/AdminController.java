@@ -1,6 +1,7 @@
 package com.smart.result.viewer.controller;
 
 import com.smart.result.viewer.dto.StudentForm;
+import com.smart.result.viewer.entity.Mark;
 import com.smart.result.viewer.entity.Student;
 import com.smart.result.viewer.repository.StudentRepo;
 import jakarta.validation.Valid;
@@ -49,6 +50,7 @@ public class AdminController {
            BindingResult bindingResult,
            Model model
     ) {
+
         if(bindingResult.hasErrors()){
             List<String> standardOptions = new ArrayList<>();
             standardOptions.add("CSE");
@@ -62,9 +64,18 @@ public class AdminController {
         //convert student form to student entity
 
         Student student =  modelMapper.map(studentForm, Student.class);
-        student.setId(UUID.randomUUID().toString());
 
-       Student savedStudent = studentRepo.save(student);
+        //har marks to attach student
+        List<Mark> updatedList = student.getMarks().stream().map((Mark mark) -> {
+            mark.setStudent(student);
+            return mark;
+        }).toList();
+
+        //update student list
+        student.setMarks(updatedList);
+
+        student.setId(UUID.randomUUID().toString());
+       studentRepo.save(student);
        return "redirect:/admin/add-result?message=Student added successfully";
 
     }

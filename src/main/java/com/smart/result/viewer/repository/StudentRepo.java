@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 @Repository
-public interface StudentRepo extends JpaRepository<Student, Integer>
+public interface StudentRepo extends JpaRepository<Student, String>
 {
     Optional<Student> findByRollNumber(String rollNumber);
     Optional<Student> findByRollNumberAndDateOfBirth(String rollNumber, LocalDate dateOfBirth);

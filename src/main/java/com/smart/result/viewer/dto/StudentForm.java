@@ -1,10 +1,15 @@
 package com.smart.result.viewer.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.smart.result.viewer.entity.Mark;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,11 +32,13 @@ public class StudentForm
     private String photoName;
     //@NotBlank(message = "Dob is required !!")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     @NotBlank(message = "Standard is required !!")
     private String standard;
     @NotBlank(message = "Father Name is required !!")
     private String fatherName;
     @NotBlank(message = "Gender is required !!")
     private String gender;
+
+    private List<MarkForm> marks = new ArrayList<>();
 }

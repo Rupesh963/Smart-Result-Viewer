@@ -174,7 +174,7 @@
         <!--standard-->
         <div class="mt-5">
             <label for="standard" class="block mb-2.5 text-sm font-medium text-heading"> Standard</label>
-            <select class="w-full border shadow " id="standard" th:field="*{standard}">
+            <select class="w-full border shadow" id="standard" th:field="*{standard}">
 
                 <option th:each="standard : ${standardOptions}" th:value="${standard}" th:text="${standard}"></option>
 
@@ -230,24 +230,6 @@
         <!--subject and marks-->
         <div>
             <div id="marks_container">
-                <div class="flex gap-4 rounded border px-3 mt-3 py-4">
-                    <div class="flx flx-col">
-                        <label>Subject</label>
-                        <input type="text" placeholder="Enter subject">
-                    </div>
-                    <div class="flex flex-col">
-                        <label>Marks</label>
-                        <input  type="text" placeholder="Enter marks">
-                    </div>
-                    <div class="flex flex-col">
-                        <label>Grade</label>
-                        <input type="text" placeholder="Enter Grade">
-                    </div>
-                    <div class="flex flex-col">
-                        <label>Feedback</label>
-                        <input type="text" placeholder="Enter Feedback">
-                    </div>
-                </div>
             </div>
             <div class="flex justify-center my-4">
                 <button onclick="addMarksRow()" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Add Subject Marks</button>
@@ -266,27 +248,34 @@
 
 </div>
 <script>
+
+    let index = 0;
+
     function addMarksRow() {
         const container = document.getElementById('marks_container')
-
-        container.innerHTML = container.innerHTML +  `<div class="flex gap-4 rounded border px-3 mt-3 py-4">
+        container.insertAdjacentHTML('beforeend' , `<div class="flex gap-4 rounded border px-3 mt-3 py-4">
                     <div class="flx flx-col">
                         <label>Subject</label>
-                        <input type="text" placeholder="Enter subject">
+                        <input name="marks[${index}].subjectName" class="w-full border shadow" type="text" placeholder="Enter subject">
                     </div>
                     <div class="flex flex-col">
                         <label>Marks</label>
-                        <input  type="text" placeholder="Enter marks">
+                        <input name="marks[${index}].marks" class="w-full border shadow" type="text" placeholder="Enter marks">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Max Marks</label>
+                        <input name="marks[${index}].maxMarks" class="w-full border shadow" type="text" placeholder="Enter max marks">
                     </div>
                     <div class="flex flex-col">
                         <label>Grade</label>
-                        <input type="text" placeholder="Enter Grade">
+                        <input name="marks[${index}].grade" class="w-full border shadow" type="text" placeholder="Enter Grade">
                     </div>
                     <div class="flex flex-col">
                         <label>Feedback</label>
-                        <input type="text" placeholder="Enter Feedback">
+                        <input name="marks[${index}].feedback" class="w-full border shadow" type="text" placeholder="Enter Feedback">
                     </div>
-                </div> `
+                </div> `)
+        index++;
     }
 </script>
 

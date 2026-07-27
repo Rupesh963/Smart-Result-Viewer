@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${student.name}">Student Marksheet</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body
+        class="min-h-screen flex items-center justify-center p-6 md:p-10 bg-gradient-to-br from-blue-500 to-pink-500">
+
+<div class="w-full max-w-3xl bg-white rounded-2xl shadow-2xl p-5 my-8">
+
+    <!-- ================= Header ================= -->
+
+    <div class="flex justify-between items-center border-b pb-3">
+
+        <div>
+
+            <h1 class="text-5xl font-bold text-blue-600">
+                Student Marksheet
+            </h1>
+
+            <p class="text-gray-500 mt-2 text-lg">
+                Academic Year:
+                <span class="font-semibold">
+                    2026-27
+                </span>
+            </p>
+
+        </div>
+
+        <!-- Student Photo -->
+
+        <div>
+
+            <img src="https://imgs.search.brave.com/3GhN69dredSxnu920lDE4297WxrNHRHSvXd23qd2Vq0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kYXRh/LmluZGlhbmV4cHJl/c3MuY29tL2VsZWN0/aW9uMjAxOS9hYm91/dC9pbWFnZXMvcG9s/aXRpY2lhbi9kaGFy/bWVuZHJhLXByYWRo/YW4uanBnP3c9MTk1" alt="Student Photo"
+                 class="w-20 h-20 rounded-full border-2 border-blue-600 object-cover" />
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= Student Details ================= -->
+
+    <div class="grid md:grid-cols-2 gap-6 mt-4">
+
+        <!-- Left -->
+
+        <div class="space-y-3 text-lg">
+
+            <p>
+                <span class="font-bold">Name:</span>
+
+                <span th:text="${student.name}">
+                    John Doe
+                </span>
+            </p>
+
+            <p>
+                <span class="font-bold">Roll Number:</span>
+
+                <span th:text="${student.rollNumber}">
+                    12345
+                </span>
+            </p>
+
+            <p>
+                <span class="font-bold">Email:</span>
+
+                <span th:text="${student.email}">
+                    abc@gmail.com
+                </span>
+            </p>
+
+            <p>
+                <span class="font-bold">Address:</span>
+
+                <span th:text="${student.address}">
+                    Noida
+                </span>
+            </p>
+
+            <p>
+                <span class="font-bold">School:</span>
+
+                <span th:text="${student.schoolName}">
+                    XYZ School
+                </span>
+            </p>
+
+            <p>
+                <span class="font-bold">Class:</span>
+
+                <span th:text="${student.standard}">
+                    10th
+                </span>
+            </p>
+
+        </div>
+
+
+
+        <!-- Right -->
+
+        <div class="space-y-3 text-lg">
+
+            <p>
+
+                <span class="font-bold">
+                    Date of Birth:
+                </span>
+
+                <span th:text="${student.dateOfBirth}">
+                    2005-05-15
+                </span>
+
+            </p>
+
+            <p>
+
+                <span class="font-bold">
+                    Gender:
+                </span>
+
+                <span th:text="${student.gender}">
+                    Male
+                </span>
+
+            </p>
+
+            <p>
+
+                <span class="font-bold">
+                    Father's Name:
+                </span>
+                Mr.
+                <span th:text="${student.fatherName}">
+                    Mr. Doe
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= Marks Section ================= -->
+
+    <div class="mt-5">
+
+        <h2 class="text-3xl font-bold text-gray-700 mb-6">
+            Marks Obtained
+        </h2>
+
+        <!-- ================= Marks Table ================= -->
+
+        <div class="overflow-x-auto">
+
+            <table class="w-full border-collapse">
+
+                <!-- Table Header -->
+
+                <thead>
+
+                <tr class="bg-blue-600 text-white text-lg">
+
+                    <th class="text-left px-4 py-2">
+                        Subject
+                    </th>
+
+                    <th class="text-left px-4 py-2">
+                        Marks
+                    </th>
+
+                    <th class="text-left px-4 py-2">
+                        Max Marks
+                    </th>
+
+                    <th class="text-left px-4 py-2">
+                        Grade
+                    </th>
+
+                    <th class="text-left px-4 py-2">
+                        Feedback
+                    </th>
+
+                </tr>
+
+                </thead>
+
+
+
+                <!-- Table Body -->
+
+                <tbody>
+
+                <tr
+                        th:each="mark : ${marks}"
+                        class="border-b hover:bg-gray-50 transition">
+
+                    <td class="px-4 py-2"
+                        th:text="${mark.subjectName}">
+                        Mathematics
+                    </td>
+
+                    <td class="px-4 py-2"
+                        th:text="${mark.marks}">
+                        95
+                    </td>
+
+                    <td class="px-4 py-2"
+                        th:text="${mark.maxMarks}">
+                        100
+                    </td>
+
+                    <td class="px-4 py-2">
+
+                        <span
+                                class="font-semibold text-green-600"
+                                th:text="${mark.grade}">
+                            A+
+                        </span>
+
+                    </td>
+
+                    <td class="px-4 py-2"
+                        th:text="${mark.feedback}">
+                        Excellent
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- ================= Result Summary ================= -->
+
+        <div class="mt-5 text-lg space-y-1">
+
+            <p>
+
+                <span class="font-bold">
+                    Total Marks :
+                </span>
+
+                <span th:text="${totalMarks}">
+                    262
+                </span>
+
+                /
+
+                <span th:text="${totalMaxMarks}">
+                    300
+                </span>
+
+            </p>
+
+
+
+            <p>
+
+                <span class="font-bold">
+                    Percentage :
+                </span>
+
+                <span th:text="${percentage}">
+                    87.33
+                </span>
+
+                %
+
+            </p>
+
+
+
+            <p>
+
+                <span class="font-bold">
+                    Result :
+                </span>
+
+                <span
+                        class="font-bold text-green-600"
+                        th:text="${result}">
+                    Passed
+                </span>
+
+            </p>
+
+        </div>
+
+
+
+        <!-- Footer -->
+
+        <div class="mt-5 text-center text-sm text-gray-500">
+
+            Generated on :
+
+            <span th:text="${#temporals.format(#temporals.createNow(),'yyyy-MM-dd')}">
+                2026-07-27
+            </span>
+
+        </div>
+
+        <div class="flex justify-center gap-3 mt-3">
+            <a th:href="@{'/view-result'}" type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Back</a>
+            <button onclick="printResult()" type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-base text-sm px-4 py-2.5 text-center leading-5">Print Result</button>
+        </div>
+    </div>
+</div>
+<script>
+    function printResult(){
+        window.print()
+    }
+</script>
+</body>
+</html>
